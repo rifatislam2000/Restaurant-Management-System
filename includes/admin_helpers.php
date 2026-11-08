@@ -1,5 +1,5 @@
 <?php
-
+// Common helper functions for Admin pages.
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

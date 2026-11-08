@@ -34,9 +34,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <div class="row">
         <aside class="col-md-2 sidebar py-4">
             <div class="px-3 mb-3 text-secondary small fw-bold">MAIN MENU</div>
-            <a href="dashboard.php" class="sidebar-link <?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
-                Dashboard
-            </a>
+            <?php
+            $menus = [
+                'dashboard.php' => ['Dashboard', 'bi-speedometer2'],
+                'users.php' => ['Users', 'bi-people'],
+                'categories.php' => ['Categories', 'bi-grid'],
+                'foods.php' => ['Food Management', 'bi-egg-fried'],
+                'customers.php' => ['Customers', 'bi-person'],
+                'orders.php' => ['Orders', 'bi-cart'],
+                'order_items.php' => ['Order Items', 'bi-receipt'],
+            ];
+            foreach ($menus as $file => $menu):
+            ?>
+                <a href="<?= h($file) ?>" class="sidebar-link <?= $currentPage === $file ? 'active' : '' ?>">
+                    <?= h($menu[0]) ?>
+                </a>
+            <?php endforeach; ?>
+            <a href="../index.php" class="sidebar-link">Website Home</a>
         </aside>
         <main class="col-md-10 p-4">
             <?php show_admin_message(); ?>
