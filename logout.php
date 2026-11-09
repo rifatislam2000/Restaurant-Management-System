@@ -16,7 +16,6 @@ if (
 
     http_response_code(400);
     exit('Invalid logout request.');
-
 }
 $_SESSION = [];
 
@@ -34,7 +33,6 @@ if (ini_get('session.use_cookies')) {
         'httponly' => $cookieParams['httponly'],
         'samesite' => $cookieParams['samesite'],
     ]);
-
 }
 
 session_destroy();

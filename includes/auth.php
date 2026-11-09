@@ -22,28 +22,24 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 if (empty($_SESSION['csrf_token'])) {
 
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-
 }
 
 
 // Check User Login
-function require_login() {
+function require_login()
+{
 
     if (!isset($_SESSION['user_id'])) {
 
         header("Location: ../login.php");
         exit;
-
     }
-
 }
 
 
 // HTML Security Function
-function e($value) {
+function e($value)
+{
 
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-
 }
-
-?>
